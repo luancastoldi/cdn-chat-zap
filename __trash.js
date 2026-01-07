@@ -1,9 +1,8 @@
 const scriptURL = new URL(document.currentScript.src);
 const phone = scriptURL.searchParams.get('ph');
 const message = scriptURL.searchParams.get('msg');
+const anw = scriptURL.searchParams.get('anw');
 
-var isPopUpWpVisible = true;
-const START_MESSAGE = "Olá, como posso ajudar?"
 const FOTO_PERFIL = "https://media-gru2-2.cdn.whatsapp.net/v/t61.24694-24/300530875_481581893334477_5535688905085636127_n.jpg?ccb=11-4&oh=01_Q5Aa1QFMhjPpnqlZmz_JP1n0cQrcRVn5Oq8_Z02Y48kf8Ka8cw&oe=6807E9D1&_nc_sid=5e03e0&_nc_cat=108"
 const layout = `
   <zapme-wp-chat>
@@ -19,7 +18,7 @@ const layout = `
                 </div>
 
                 <div>
-                    <span>${START_MESSAGE}</span>
+                    <span>${anw}</span>
                     <input id="msg-chat-wa" type="text" placeholder="Mensagem" value="">
                     <button id="btn-send-chat-wa">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
@@ -37,9 +36,14 @@ const layout = `
 const style = document.createElement("style");
 style.innerHTML = `
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 zapme-wp-chat {
 
-    font-family: "Open Sans", sans-serif;
+    *{
+    font-family: "Open Sans", sans-serif !important;
+    }
+
+    font-family: "Open Sans", sans-serif !important;
     position: fixed;
     height: 60px;
     right: 30px;
@@ -104,7 +108,7 @@ zapme-wp-chat {
                     background-color: #25D366;
                     outline: 3px solid #008069;
                     translate: 35px 35px;
-                    border-radius: 10px;
+                    border-radius: 8px;
                 }
 
                 >div {
@@ -221,9 +225,9 @@ zapme-wp-chat {
 }
 `;
 
-
 document.head.appendChild(style);
 document.querySelector('body').insertAdjacentHTML('afterbegin', layout);
+
 
 document.getElementById('icon-wa').addEventListener('click', () => {
     const popUpWhatsApp = document.querySelector('.chat');
