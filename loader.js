@@ -10,7 +10,8 @@
     if (!ph) return;
 
     const iframe = document.createElement('iframe');
-    iframe.src = `http://localhost:5500/chat.html?ph=${ph}&msg=${msg}&anw=${anw}&isOpen=${isOpen}`;
+    const urlCDN = `https://cdn-chat-zap.vercel.app`;
+    iframe.src = `http://${urlCDN}chat.html?ph=${ph}&msg=${msg}&anw=${anw}&isOpen=${isOpen}`;
 
     iframe.style.position = 'fixed';
     iframe.style.right = '0';
